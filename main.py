@@ -1,10 +1,10 @@
 import tkinter as tk
 from Character import Character
 from Gun import Gun
+from Bullet import Bullet
 
 
 def frame():
-
     ball.move()
     ball.jump()
 
@@ -12,7 +12,13 @@ def frame():
     gun.jump()
     gun.move_gun()
 
-    top.after(50, frame)
+    # bullet.create()
+    canvas.bind('<Button-1>', bullet.create)
+    bullet.gun_end_coordinates(gun.gun_end_x_axis, gun.gun_end_y_axis)
+    if bullet.item_id:
+        bullet.bullet_fly()
+
+    top.after(30, frame)
 
 
 top = tk.Tk()
@@ -25,6 +31,8 @@ ball.create()
 
 gun = Gun(canvas)
 gun.create()
+
+bullet = Bullet(canvas)
 
 frame()
 
