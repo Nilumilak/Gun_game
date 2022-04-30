@@ -28,3 +28,4 @@ class Gun(Character):
                                self.gun_end_x_axis, self.gun_end_y_axis)
 
         self.canvas.bind('<Motion>', motion)
+
