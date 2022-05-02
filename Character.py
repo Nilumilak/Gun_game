@@ -25,9 +25,8 @@ class Character:
     def move(self):
         if keyboard.is_pressed('a'):
             if self.x_axis > 2 + self.R:
-                speed_back = -self.speed
-                self.x_axis += speed_back
-                self.canvas.move(self.item_id, speed_back, 0)
+                self.x_axis -= self.speed
+                self.canvas.move(self.item_id, -self.speed, 0)
         if keyboard.is_pressed('d'):
             if self.x_axis < 800 - self.R:
                 self.x_axis += self.speed
