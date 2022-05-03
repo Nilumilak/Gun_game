@@ -2,6 +2,7 @@ import tkinter as tk
 import Character
 import Gun
 import Bullet
+import Targets
 
 
 def frame():
@@ -17,6 +18,10 @@ def frame():
                                                                     gun.y_axis, trigger))
     [shell.bullet_fly() for shell in Bullet.bullets if Bullet.bullets]
     Bullet.delete_bullets(canvas)
+
+    Targets.create_targets(canvas)
+    [target.move() for target in Targets.targets if Targets.targets]
+    Targets.delete_targets(canvas, Bullet.bullets)
 
     top.after(30, frame)
 
