@@ -22,8 +22,7 @@ def frame():
 
     Targets.create_targets(canvas)
     [target.move() for target in Targets.targets if Targets.targets]
-    if Targets.delete_targets(canvas, Bullet.bullets):
-        battlefield_events.score_counting()
+    Targets.delete_targets(canvas, Bullet.bullets, battlefield_events)
 
     top.after(30, frame)
 
