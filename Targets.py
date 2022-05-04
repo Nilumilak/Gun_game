@@ -29,7 +29,7 @@ class Target:
 
 def create_targets(canvas):
     global targets
-    chance = randint(0, 20)
+    chance = randint(0, 40)
     if chance == 1:
         targets.append(Target(canvas))
 
@@ -51,6 +51,7 @@ def delete_targets(canvas, bullets):
                     target.delete_target()
                     canvas.delete(target)
                     targets.remove(target)
+                    return True
 
 
 targets = []

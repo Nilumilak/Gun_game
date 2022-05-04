@@ -3,6 +3,7 @@ import Character
 import Gun
 import Bullet
 import Targets
+import Battlefield
 
 
 def frame():
@@ -21,7 +22,8 @@ def frame():
 
     Targets.create_targets(canvas)
     [target.move() for target in Targets.targets if Targets.targets]
-    Targets.delete_targets(canvas, Bullet.bullets)
+    if Targets.delete_targets(canvas, Bullet.bullets):
+        battlefield_events.score_counting()
 
     top.after(30, frame)
 
@@ -30,6 +32,8 @@ top = tk.Tk()
 top.title('Ball game')
 canvas = tk.Canvas(top, width=800, height=600, bg='white')
 canvas.pack()
+
+battlefield_events = Battlefield.Battlefield(canvas)
 
 ball = Character.Character(canvas)
 ball.create()
