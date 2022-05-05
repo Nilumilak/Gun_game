@@ -34,11 +34,10 @@ def create_bullets(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis, event
         bullets[-1].create()
 
 
-def delete_bullets(canvas):
+def delete_bullets():
     for shell in bullets:
         if shell.x_axis > 900 or shell.x_axis < -100 or shell.y_axis > 700 or shell.y_axis < -100:
             shell.delete_bullet()
-            canvas.delete(shell)
             bullets.remove(shell)
 
 

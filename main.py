@@ -4,6 +4,7 @@ import Gun
 import Bullet
 import Targets
 import Battlefield
+import Obstacle
 
 
 def frame():
@@ -18,11 +19,15 @@ def frame():
                                                                     gun.gun_end_y_axis, gun.x_axis,
                                                                     gun.y_axis, trigger))
     [shell.bullet_fly() for shell in Bullet.bullets if Bullet.bullets]
-    Bullet.delete_bullets(canvas)
+    Bullet.delete_bullets()
 
     Targets.create_targets(canvas)
     [target.move() for target in Targets.targets if Targets.targets]
-    Targets.delete_targets(canvas, Bullet.bullets, battlefield_events)
+    Targets.delete_targets(Bullet.bullets, battlefield_events)
+
+    Obstacle.create_obstacles(canvas)
+    [obstacle.move() for obstacle in Obstacle.obstacles if Obstacle.obstacles]
+    Obstacle.delete_obstacles()
 
     top.after(30, frame)
 

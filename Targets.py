@@ -34,11 +34,10 @@ def create_targets(canvas):
         targets.append(Target(canvas))
 
 
-def delete_targets(canvas, bullets, battlefield_events):
+def delete_targets(bullets, battlefield_events):
     for target in targets:
         if target.y_axis > 600:
             target.delete_target()
-            canvas.delete(target)
             targets.remove(target)
             battlefield_events.life_counting()
         for shell in bullets:
@@ -46,11 +45,9 @@ def delete_targets(canvas, bullets, battlefield_events):
                 if (target.x_axis - target.R < shell.x_axis < target.x_axis + target.R
                         and target.y_axis - target.R < shell.y_axis < target.y_axis + target.R):
                     shell.delete_bullet()
-                    canvas.delete(shell)
                     if shell in bullets:
                         bullets.remove(shell)
                     target.delete_target()
-                    canvas.delete(target)
                     targets.remove(target)
                     battlefield_events.score_counting()
 
