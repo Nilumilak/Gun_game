@@ -27,7 +27,7 @@ def frame():
 
     Obstacle.create_obstacles(canvas)
     [obstacle.move() for obstacle in Obstacle.obstacles if Obstacle.obstacles]
-    Obstacle.delete_obstacles()
+    Obstacle.delete_obstacles(ball, battlefield_events)
 
     top.after(30, frame)
 

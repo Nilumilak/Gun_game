@@ -30,7 +30,7 @@ class Target:
 
 def create_targets(canvas):
     global targets
-    chance = randint(0,20)
+    chance = randint(0, 20)
     if chance == 1:
         targets.append(Target(canvas))
 
@@ -44,7 +44,7 @@ def delete_targets(bullets, battlefield_events):
         for shell in bullets:
             for target in targets:
                 distance = math.sqrt((target.x_axis - shell.x_axis) ** 2 + (target.y_axis - shell.y_axis) ** 2)
-                if distance <= target.R + shell.R:
+                if distance < target.R + shell.R:
                     shell.delete_bullet()
                     if shell in bullets:
                         bullets.remove(shell)
