@@ -28,23 +28,37 @@ class Target:
         self.canvas.delete(self.item_id)
 
 
+class Hearts(Target):
+    def __init__(self, canvas):
+        super().__init__(canvas)
+        self.R = 10
+
+        self.item_id = self.canvas.create_text(self.x_axis, self.y_axis, text='♥', font=("Helvetica", 30), fill='red')
+
+
 def create_targets(canvas):
     global targets
-    chance = randint(0, 20)
+    chance = randint(0, 50)
     if chance == 1:
         targets.append(Target(canvas))
+    heart_chance = randint(0, 2000)
+    if heart_chance == 1:
+        targets.append(Hearts(canvas))
 
 
 def delete_targets(bullets, battlefield_events):
     for target in targets:
         if target.y_axis > 600:
+            if type(target) == Target:
+                battlefield_events.life_counting()
             target.delete_target()
             targets.remove(target)
-            battlefield_events.life_counting()
         for shell in bullets:
             for target in targets:
                 distance = math.sqrt((target.x_axis - shell.x_axis) ** 2 + (target.y_axis - shell.y_axis) ** 2)
                 if distance < target.R + shell.R:
+                    if type(target) == Hearts:
+                        battlefield_events.add_lifes()
                     shell.delete_bullet()
                     if shell in bullets:
                         bullets.remove(shell)

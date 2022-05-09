@@ -21,3 +21,8 @@ class Battlefield:
     def life_counting(self):
         self.life_numbers -= 1
         self.canvas.itemconfig(self.life_item_id, text=self.life_text * self.life_numbers)
+
+    def add_lifes(self):
+        if self.life_numbers < 4:
+            self.life_numbers += 1
+            self.canvas.itemconfig(self.life_item_id, text=self.life_text * self.life_numbers)
