@@ -20,6 +20,9 @@ def frame():
                                                                     gun.y_axis, trigger))
     [shell.bullet_fly() for shell in Bullet.bullets if Bullet.bullets]
     Bullet.delete_bullets()
+    print(Bullet.bullet_amount)
+    if battlefield_events.life_numbers == 0:
+        top.quit()
 
     Targets.create_targets(canvas)
     [target.move() for target in Targets.targets if Targets.targets]

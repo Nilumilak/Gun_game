@@ -28,10 +28,12 @@ class Bullet:
 
 
 def create_bullets(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis, event):
-    global bullets
-    if event:
-        bullets.append(Bullet(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis))
-        bullets[-1].create()
+    global bullets, bullet_amount
+    if bullet_amount:
+        bullet_amount -= 1
+        if event:
+            bullets.append(Bullet(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis))
+            bullets[-1].create()
 
 
 def delete_bullets():
@@ -42,3 +44,4 @@ def delete_bullets():
 
 
 bullets = []
+bullet_amount = 3

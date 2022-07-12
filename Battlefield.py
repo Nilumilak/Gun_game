@@ -1,4 +1,5 @@
 import tkinter as tk
+import Bullet
 
 
 class Battlefield:
@@ -17,10 +18,13 @@ class Battlefield:
     def score_counting(self):
         self.score += 1
         self.canvas.itemconfig(self.score_item_id, text='Score: ' + str(self.score))
+        if self.score % 50 == 0:
+            Bullet.bullet_amount += 1
 
     def life_counting(self):
         self.life_numbers -= 1
         self.canvas.itemconfig(self.life_item_id, text=self.life_text * self.life_numbers)
+
 
     def add_lifes(self):
         if self.life_numbers < 4:
