@@ -30,15 +30,15 @@ class Bullet:
 def create_bullets(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis, event):
     global bullets, bullet_amount
     if bullet_amount:
-        bullet_amount -= 1
         if event:
             bullets.append(Bullet(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis))
             bullets[-1].create()
 
 
-def delete_bullets():
+def delete_bullets(battlefield_events):
     for shell in bullets:
         if shell.x_axis > 900 or shell.x_axis < -100 or shell.y_axis > 700 or shell.y_axis < -100:
+            battlefield_events.bullet_counting()
             shell.delete_bullet()
             bullets.remove(shell)
 

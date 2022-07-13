@@ -19,7 +19,7 @@ def frame():
                                                                     gun.gun_end_y_axis, gun.x_axis,
                                                                     gun.y_axis, trigger))
     [shell.bullet_fly() for shell in Bullet.bullets if Bullet.bullets]
-    Bullet.delete_bullets()
+    Bullet.delete_bullets(battlefield_events)
     print(Bullet.bullet_amount)
     if battlefield_events.life_numbers == 0:
         top.quit()
