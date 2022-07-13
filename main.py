@@ -17,10 +17,9 @@ def frame():
 
     canvas.bind('<Button-1>', lambda trigger: Bullet.create_bullets(canvas, gun.gun_end_x_axis,  # creates bullets
                                                                     gun.gun_end_y_axis, gun.x_axis,
-                                                                    gun.y_axis, trigger))
+                                                                    gun.y_axis, battlefield_events, trigger))
     [shell.bullet_fly() for shell in Bullet.bullets if Bullet.bullets]
-    Bullet.delete_bullets(battlefield_events)
-    print(Bullet.bullet_amount)
+    Bullet.delete_bullets()
     if battlefield_events.life_numbers == 0:
         top.quit()
 

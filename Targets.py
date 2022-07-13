@@ -57,6 +57,7 @@ def delete_targets(bullets, battlefield_events):
             for target in targets:
                 distance = math.sqrt((target.x_axis - shell.x_axis) ** 2 + (target.y_axis - shell.y_axis) ** 2)
                 if distance < target.R + shell.R:
+                    battlefield_events.add_bullet()
                     if type(target) == Hearts:
                         battlefield_events.add_lifes()
                     shell.delete_bullet()

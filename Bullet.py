@@ -27,18 +27,18 @@ class Bullet:
         self.canvas.delete(self.item_id)
 
 
-def create_bullets(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis, event):
+def create_bullets(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis, battlefield_events, event):
     global bullets, bullet_amount
     if bullet_amount:
+        battlefield_events.bullet_counting()
         if event:
             bullets.append(Bullet(canvas, gun_end_x_axis, gun_end_y_axis, x_axis, y_axis))
             bullets[-1].create()
 
 
-def delete_bullets(battlefield_events):
+def delete_bullets():
     for shell in bullets:
         if shell.x_axis > 900 or shell.x_axis < -100 or shell.y_axis > 700 or shell.y_axis < -100:
-            battlefield_events.bullet_counting()
             shell.delete_bullet()
             bullets.remove(shell)
 
